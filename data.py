@@ -31,7 +31,7 @@ try:
 
                 print("1 Row inserted Successfully..")
                 time.sleep(3)
-                case 2:
+            case 2:
                 print("\t1. Change name")
                 print("\t2. Change Date of Birth")
                 print("\t3. Change Phone Number")
@@ -62,4 +62,36 @@ try:
                         conn.commit()
                     case _:
                         print("Pls Enter valid choice")
-                        
+            case 3:
+                id1 = int(input("Enter Student ID To Deleted:"))
+
+                sqld = 'DELETE from student where STUDENTID=(:1)'
+                cur.execute(sqld, (id1,))
+                conn.commit()
+
+                print("1 row Deleted Succesfully..")
+                time.sleep(3)
+            case 4:
+
+                disp = 'SELECT * from student'
+                cur.execute(disp)
+                rows = cur.fetchall()
+                if rows!=None:
+                 print("List of Student\n")
+                 for row in rows:
+                    print(row)
+                else:
+                    print("No Data Entered....")
+                time.sleep(3)
+
+            case 5:
+                break
+
+            case _:
+                print("Invalid Choice! Enter Between 1 to 4......")
+
+except Exception as err:
+    print("Error While Connecting Database....")
+
+cur.close()
+conn.close()
