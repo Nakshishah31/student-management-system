@@ -31,3 +31,35 @@ try:
 
                 print("1 Row inserted Successfully..")
                 time.sleep(3)
+                case 2:
+                print("\t1. Change name")
+                print("\t2. Change Date of Birth")
+                print("\t3. Change Phone Number")
+                print("\t4. Change Email Id")
+                up = int(input("\tEnter Choice:"))
+                up_id = int(input("Enter Id for updating details:"))
+
+                match up:
+                    case 1:
+                        name_up=input("Changed name :")
+                        sqlq=f"update set fullname = {name_up} where studentid = {up_id}"
+                        cur.execute(sqlq)
+                        conn.commit()
+                    case 2:
+                        dob_up=input("Changed Date Of Birth(DD-MON-YY): ")
+                        sqlq=f"update set dob = {dob_up} where studentid = {up_id}"
+                        cur.execute(sqlq)
+                        conn.commit()
+                    case 3:
+                        phone_up=int(input("Changed Phone number : +91"))
+                        sqlq=f"update set phoneno = {phone_up} where studentid = {up_id}"
+                        cur.execute(sqlq)
+                        conn.commit()
+                    case 4:
+                        email_up=input("Changed Email ID:")
+                        sqlq=f"update set email = {email_up} where studentid = {up_id}"
+                        cur.execute(sqlq)
+                        conn.commit()
+                    case _:
+                        print("Pls Enter valid choice")
+                        
